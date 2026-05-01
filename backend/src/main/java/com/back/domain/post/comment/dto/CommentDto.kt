@@ -9,15 +9,15 @@ data class CommentDto(
     val content: String,
     val authorId: Int,
     val authorName: String,
-    val createDate: LocalDateTime?,
-    val modifyDate: LocalDateTime?
+    val createDate: LocalDateTime,
+    val modifyDate: LocalDateTime
 ) {
     constructor(comment: Comment) : this(
-        comment.getId(),
-        comment.getContent(),
-        comment.getAuthor().getId(),
-        comment.getAuthor().getName(),
-        comment.getCreateDate(),
-        comment.getModifyDate()
+        comment.id,
+        comment.content,
+        comment.author.id,
+        comment.author.name,
+        comment.createDate,
+        comment.modifyDate
     )
 }
