@@ -2,7 +2,7 @@ plugins {
 	java
 	kotlin("jvm") version "2.2.21"
 	kotlin("plugin.spring") version "2.2.21"
-	id("org.springframework.boot") version "4.0.3"
+	id("org.springframework.boot") version "4.0.6"
 	id("io.spring.dependency-management") version "1.1.7"
 }
 
@@ -42,7 +42,6 @@ dependencies {
 	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.13.0")
 	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.13.0")
 
-	implementation(kotlin("stdlib-jdk8"))
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 
 	annotationProcessor("org.projectlombok:lombok")
