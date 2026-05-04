@@ -137,7 +137,7 @@ public class ApiV1PostController {
         Member actor = rq.getActor(); // 인증된 사용자 정보 가져오기
 
         Post post = postService.findById(id).get();
-        System.out.println(post.author.getId());
+        System.out.println(post.getAuthor().getId());
         post.checkDelete(actor);
 
         postService.deleteById(id);
