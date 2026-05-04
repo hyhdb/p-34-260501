@@ -9,7 +9,6 @@ import com.back.global.rsData.RsData
 import jakarta.validation.Valid
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
-import lombok.RequiredArgsConstructor
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -19,14 +18,12 @@ class ApiV1MemberController(
     private val rq: Rq
 ) {
 
-    @JvmRecord
     data class MemberJoinReqBody(
         @field:NotBlank @field:Size(min = 2, max = 30) val username: String,
         @field:NotBlank @field:Size(min = 2, max = 30) val password: String,
         @field:NotBlank @field:Size(min = 2, max = 30) val nickname: String
     )
 
-    @JvmRecord
     data class MemberJoinResBody(
         val memberDto: MemberDto
     )
@@ -44,13 +41,11 @@ class ApiV1MemberController(
         )
     }
 
-    @JvmRecord
     data class MemberLoginReqBody(
         @field:NotBlank @field:Size(min = 2, max = 30) val username: String,
         @field:NotBlank @field:Size(min = 2, max = 30) val password: String
     )
 
-    @JvmRecord
     data class MemberLoginResBody(
         val apiKey: String,
         val accessToken: String
