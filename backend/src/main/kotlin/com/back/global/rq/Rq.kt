@@ -36,8 +36,8 @@ class Rq(
     fun getHeader(name: String, defaultValue: String): String = request.getHeader(name) ?: defaultValue
 
     fun getCookieValue(name: String, defaultValue: String): String = request
-        .cookies
-        .firstOrNull { it.name == name }
+        ?.cookies
+        ?.firstOrNull { it.name == name }
         ?.value
         ?.takeIf { it.isNotBlank() }
         ?: defaultValue
