@@ -5,7 +5,6 @@ import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import lombok.NoArgsConstructor
 import org.springframework.security.core.authority.SimpleGrantedAuthority
-import java.util.List
 
 @Entity
 @NoArgsConstructor
@@ -16,11 +15,12 @@ class Member(
     var nickname: String,
     @Column(unique = true)
     var apiKey: String
-) : BaseEntity() {
+) : BaseEntity(0) {
 
     constructor(id: Int, username: String, nickname: String)
             : this(username, "", nickname, "") {
-        this.setId(id)
+
+        this.id = id
         this.username = username
         this.nickname = nickname
     }
@@ -31,12 +31,12 @@ class Member(
     val isAdmin: Boolean
         get() = "admin" == username
 
-    val authorities: MutableList<SimpleGrantedAuthority>
+    val authorities: List<SimpleGrantedAuthority>
         get() {
-            if (this.isAdmin) {
-                return List.of<SimpleGrantedAuthority>(SimpleGrantedAuthority("ROLE_ADMIN"))
+            return if (isAdmin) {
+                listOf(SimpleGrantedAuthority("ROLE_ADMIN"))
             } else {
-                return List.of<SimpleGrantedAuthority>(SimpleGrantedAuthority("ROLE_USER"))
+                listOf(SimpleGrantedAuthority("ROLE_USER"))
             }
         }
 }
