@@ -33,7 +33,7 @@ public class ApiV1CommentController {
             @PathVariable int postId
     ) {
         Post post = postService.findById(postId).get();
-        List<Comment> comments = post.getComments();
+        List<Comment> comments = post.comments;
 
         List<CommentDto> commentDtoList = comments.reversed().stream()
                 .map(CommentDto::new)
